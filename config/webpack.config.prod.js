@@ -27,7 +27,7 @@ module.exports = {
     publicPath: publicPath
   },
   resolve: {
-    extensions: ['', '.js', '.json'],
+    extensions: ['', '.js', '.ts', '.tsx', '.json'],
     alias: {
       // This `alias` section can be safely removed after ejection.
       // We do this because `babel-runtime` may be inside `react-scripts`,
@@ -47,9 +47,9 @@ module.exports = {
   module: {
     preLoaders: [
       {
-        test: /\.js$/,
-        loader: 'eslint',
-        include: paths.appSrc
+        test: /\.tsx$/,
+        loader: 'ts',
+        include: paths.appSrc,
       }
     ],
     loaders: [
