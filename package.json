@@ -47,6 +47,7 @@
   "homepage": "http://game7.github.io/form-builder",
   "dependencies": {
     "bootstrap": "^3.3.7",
+    "font-awesome": "^4.6.3",
     "lodash": "^4.15.0",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
