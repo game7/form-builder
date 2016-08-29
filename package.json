@@ -38,6 +38,7 @@
     "promise": "7.1.1",
     "rimraf": "2.5.4",
     "style-loader": "0.13.1",
+    "typescript": "^2.1.0-dev.20160818",
     "url-loader": "0.5.7",
     "webpack": "1.13.1",
     "webpack-dev-server": "1.14.1",
@@ -45,6 +46,7 @@
   },
   "dependencies": {
     "bootstrap": "^3.3.7",
+    "lodash": "^4.15.0",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
     "react-router": "^2.6.1",

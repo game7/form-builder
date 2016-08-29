@@ -1,16 +1,18 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import { Router, Route, IndexRoute,
+         IndexRedirect, browserHistory } from 'react-router';
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
 
 import App from './app';
-import Index from './routes/index';
+import { default as forms } from './forms';
 
 ReactDOM.render(
   <Router history={browserHistory}>
     <Route path="/" component={App}>
-      <IndexRoute component={Index}/>
+      <IndexRedirect to="/forms" />
+      {forms}
     </Route>
   </Router>,
   document.getElementById('root')
