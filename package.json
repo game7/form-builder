@@ -44,6 +44,7 @@
     "webpack-dev-server": "1.14.1",
     "whatwg-fetch": "1.0.0"
   },
+  "homepage": "http://game7.github.io/form-builder",
   "dependencies": {
     "bootstrap": "^3.3.7",
     "lodash": "^4.15.0",
