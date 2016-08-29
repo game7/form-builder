@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Route, IndexRoute } from 'react-router';
+import 'font-awesome/css/font-awesome.css';
 import List from './list';
 import Show from './show';
 

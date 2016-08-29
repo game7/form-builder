@@ -65,7 +65,10 @@ class Panel extends Component<any,any> {
         <div className="panel-heading clearfix">
           {title}
           <div style={{float: 'right'}}>
-            <button className="btn btn-xs btn-default" onClick={onEditClick}>Edit</button>
+            <button className="btn btn-xs btn-default" onClick={onEditClick}>
+              <i className="fa fa-gear"/>{" "}
+              Settings
+            </button>
           </div>
         </div>
       );
