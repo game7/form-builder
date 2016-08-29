@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { FormEvent } from 'react';
 import FormGroup from './form-group';
-import { required } from './validators';
+import { Validator } from './validators';
+import { ValidationRules } from 'aurelia-validation';
 
 export interface IFormControlProps {
   id: string,
@@ -17,12 +18,14 @@ export type PropertyChanged = (property: string, value: any) => void;
 export class FormControl<P extends IFormControlProps, S>
   extends React.Component<P, S> {
 
-  validators: {(control: FormControl<P, S>): string[]}[] = [];
+  validator: Validator<FormControl<P, S>> = new Validator<FormControl<P, S>>();
   dirty: boolean = false;
 
   constructor() {
     super();
-    this.validators.push(required);
+    this.validator.ensure('value').required().when((model: any) => {
+      return this.props.required;
+    });
   }
 
   get label(): string {
@@ -31,10 +34,6 @@ export class FormControl<P extends IFormControlProps, S>
 
   get value(): any {
     return (this.props.model || {})[this.props.property];
-  }
-
-  validate(value: string) {
-    return this.validators.map((validate) => validate(this)).reduce((prev,curr) => prev.concat(curr),[]);
   }
 
   getValueFromEvent(event: FormEvent) : any {
@@ -56,7 +55,7 @@ export class FormControl<P extends IFormControlProps, S>
   }
 
   render() {
-    const errors = this.dirty ? this.validate(this.value) : [];
+    const errors = this.dirty ? this.validator.validate(this) : [];
     return (
       <FormGroup
         id={this.props.id}

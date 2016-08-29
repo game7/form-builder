@@ -33,7 +33,6 @@ export default class Show extends React.Component<any, IState> {
   }
 
   handleModelChange = (property: string, value: any) : void => {
-    console.log(property, value);
     let state = Object.assign({}, this.state);
     state.data[property] = value;
     this.setState(state);
