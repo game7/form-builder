@@ -154,7 +154,9 @@ const AddElementButton = (props: { panel: boolean, onClick: () => void }) => {
   return (
     <button
       className="btn btn-default"
-      onClick={handleClick}>Add Element
+      onClick={handleClick}>
+      <i className="fa fa-plus"/>{" "}
+      Add Element
     </button>
   );
 
@@ -173,11 +175,19 @@ const DisplayModeButtons = (props: { display: String, onClick: (string) => void 
       <button
         type="button"
         className={"btn btn-default " + (display == 'edit' ? 'active' : '')}
-        onClick={handleClick('edit')}>Edit</button>
+        onClick={handleClick('edit')}
+      >
+        <i className="fa fa-edit"/>{" "}
+        Edit
+      </button>
       <button
         type="button"
         className={"btn btn-default " + (display == 'preview' ? 'active' : '')}
-        onClick={handleClick('preview')}>Preview</button>
+        onClick={handleClick('preview')}
+      >
+        <i className="fa fa-eye"/>{" "}
+        Preview
+      </button>
     </div>
   );
 }

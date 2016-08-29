@@ -100,6 +100,7 @@ class Accordion extends Component<{},{}> {
             <button
               className="btn btn-xs btn-default"
               onClick={handleClick}>
+              <i className="fa fa-plus"/>{" "}
               Add
             </button>
           </div>
