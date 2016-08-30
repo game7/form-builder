@@ -10,7 +10,9 @@ interface IProps {
   expanded: boolean,
   hidden?: boolean,
   onEdit: (id: string) => void,
-  onDestroy: (id: string) => void
+  onDestroy: (id: string) => void,
+  onMoveUp: (id: string) => void,
+  onMoveDown: (id: string) => void
 }
 
 export default class EditorFrame extends Component<IProps, {}> {
@@ -23,6 +25,14 @@ export default class EditorFrame extends Component<IProps, {}> {
 
   handleDestroy = (id: string) => (event: React.FormEvent) => {
     this.props.onDestroy(id);
+  }
+
+  handleMoveUp = (id: string) => (event: React.FormEvent) => {
+    this.props.onMoveUp(id);
+  }
+
+  handleMoveDown = (id: string) => (event: React.FormEvent) => {
+    this.props.onMoveDown(id);
   }
 
   handleChange = (property, value) => {
@@ -38,23 +48,39 @@ export default class EditorFrame extends Component<IProps, {}> {
     if(this.props.hidden) {
       return <div>{this.props.children}</div>
     }
+    const styles = {
+      marginTop: -10,
+      marginBottom: -10
+    }
     return (
       <Panel>
         <Panel.Heading
           title={this.props.element.type}>
-          <button className="btn btn-xs btn-default" onClick={this.handleEditClick}>
-            <i className="fa fa-gear"/>{" "}
-            Settings
+          <button className="btn btn-sm btn-default"
+            title="Settings"
+            style={styles}
+            onClick={this.handleEditClick}>
+            <i className="fa fa-gear"/>
           </button>
           {" "}
-          <button className="btn btn-xs btn-default" onClick={this.handleDestroy(this.props.element.id)}>
-            <i className="fa fa-trash-o"/>{" "}
-            Delete
+          <button className="btn btn-sm btn-default"
+            title="Move Up"
+            onClick={this.handleMoveUp(this.props.element.id)}
+            style={styles}>
+            <i className="fa fa-arrow-up"/>
+          </button>
+          {" "}
+          <button className="btn btn-sm btn-default"
+            title="Move Down"
+            onClick={this.handleMoveDown(this.props.element.id)}
+            style={styles}>
+            <i className="fa fa-arrow-down"/>
           </button>
         </Panel.Heading>
         <Panel.Body
           element={this.props.element}
           expanded={this.props.expanded}
+          handleDestroy={this.handleDestroy}
           handleChange={this.handleChange}>
           {this.props.children}
         </Panel.Body>
@@ -78,14 +104,14 @@ class Panel extends Component<any,any> {
       return (
         <div className="panel-heading clearfix">
           {title}
-          <div style={{float: 'right'}}>
+          <div style={{float: 'right', marginRight: -10}}>
             {children}
           </div>
         </div>
       );
     }
 
-    static Body({ element, expanded, children = [], handleChange }) : JSX.Element {
+    static Body({ element, expanded, handleDestroy, children = [], handleChange }) : JSX.Element {
       const style = {
         backgroundColor: '#f5f5f5',
         display: expanded ? 'block' : 'none'
@@ -105,6 +131,12 @@ class Panel extends Component<any,any> {
                 model={element}
                 onChange={handleChange}></FormElement>
             ))}
+          </div>
+          <div className="list-group-item" style={style}>
+            <button className="btn btn-default" title="Delete" onClick={handleDestroy(element.id)}>
+              <i className="fa fa-trash-o"/>{" "}
+              Delete Element
+            </button>
           </div>
         </div>
       );

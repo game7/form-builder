@@ -48,6 +48,14 @@ export default class Show extends React.Component<any, IState> {
     this.setState({form: form});
   }
 
+  handleMoveUp = (id: string) => {
+
+  }
+
+  handleMoveDown = (id: string) => {
+
+  }
+
   handleTogglePanel = () => {
     this.setState({ panel: !this.state.panel });
   }
@@ -105,6 +113,8 @@ export default class Show extends React.Component<any, IState> {
                   expanded={e.id === this.state.editing}
                   hidden={this.state.display == 'preview'}
                   onEdit={this.handleElementEdit}
+                  onMoveUp={this.handleMoveUp}
+                  onMoveDown={this.handleMoveDown}
                   onDestroy={this.handleElementDestroy}>
                   <FormElement
                     key={i}
