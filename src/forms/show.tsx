@@ -61,7 +61,7 @@ export default class Show extends React.Component<any, IState> {
 
   handleElementEdit = (id: string) : void => {
     this.setState({
-      editing: id
+      editing: this.state.editing !== id ? id : null
     });
   }
 

@@ -2,7 +2,6 @@ import * as React from 'react';
 import { FormEvent } from 'react';
 import FormGroup from './form-group';
 import { Validator } from './validators';
-import { ValidationRules } from 'aurelia-validation';
 
 export interface IFormControlProps {
   id: string,
