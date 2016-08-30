@@ -7,6 +7,7 @@ module.exports = {
     'babel-preset-react'
   ].map(require.resolve),
   plugins: [
+    'react-hot-loader/babel',    
     'babel-plugin-syntax-trailing-function-commas',
     'babel-plugin-transform-class-properties',
     'babel-plugin-transform-object-rest-spread'

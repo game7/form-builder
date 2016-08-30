@@ -8,10 +8,11 @@ var paths = require('./paths');
 module.exports = {
   devtool: 'eval',
   entry: [
+    'react-hot-loader/patch',
     require.resolve('webpack-dev-server/client') + '?/',
-    require.resolve('webpack/hot/dev-server'),
+    require.resolve('webpack/hot/only-dev-server'),
     require.resolve('./polyfills'),
-    path.join(paths.appSrc, 'index')
+    path.join(paths.appSrc, 'index.tsx')
   ],
   output: {
     // Next line is not used in dev but WebpackDevServer crashes without it:
@@ -39,19 +40,24 @@ module.exports = {
     moduleTemplates: ['*-loader']
   },
   module: {
-    preLoaders: [
-      {
-        test: /\.tsx$/,
-        loader: 'ts',
-        include: paths.appSrc,
-      }
-    ],
+    // preLoaders: [
+    //   {
+    //     test: /\.tsx$/,
+    //     loader: 'ts',
+    //     include: paths.appSrc,
+    //   }
+    // ],
     loaders: [
+      // {
+      //   test: /\.js$/,
+      //   include: paths.appSrc,
+      //   loader: 'babel',
+      //   query: require('./babel.dev')
+      // },
       {
-        test: /\.js$/,
-        include: paths.appSrc,
-        loader: 'babel',
-        query: require('./babel.dev')
+        test: /\.tsx?$/,
+        loaders: ['babel', 'ts'],
+        exclude: /(\.test.ts$|node_modules)/
       },
       {
         test: /\.css$/,
