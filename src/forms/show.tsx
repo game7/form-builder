@@ -49,11 +49,19 @@ export default class Show extends React.Component<any, IState> {
   }
 
   handleMoveUp = (id: string) => {
-
+    this.moveElement(id, -1);
   }
 
   handleMoveDown = (id: string) => {
+    this.moveElement(id, 1);
+  }
 
+  moveElement = (id: string, position: number) => {
+    let form = Object.assign({}, this.state.form);
+    let element = form.elements.filter(e => e.id === id)[0];
+    const index = form.elements.indexOf(element);
+    form.elements.splice(index + position, 0, form.elements.splice(index, 1)[0]);
+    this.setState({ form: form });
   }
 
   handleTogglePanel = () => {
