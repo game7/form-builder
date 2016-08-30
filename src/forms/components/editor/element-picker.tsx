@@ -5,33 +5,40 @@ type ClickHandler = () => void;
 
 interface IElement {
   type: string,
-  label: string
+  label: string,
+  icon: string
 }
 
 const elements : IElement[] = [
   {
     type: 'short-text',
-    label: 'Short Text'
+    label: 'Short Text',
+    icon: 'font'
   },
   {
     type: 'long-text',
-    label: 'Long Text'
+    label: 'Long Text',
+    icon: 'font'
   },
   {
     type: 'checkbox',
-    label: 'Checkbox'
+    label: 'Checkbox',
+    icon: 'check-square-o'
   },
   {
     type: 'multiple-choice',
     label: 'Multiple Choice',
+    icon: 'dot-circle-o'
   },
   {
     type: 'statement',
-    label: 'Statement'
+    label: 'Statement',
+    icon: 'paragraph'
   },
   {
     type: 'email',
-    label: 'Email'
+    label: 'Email',
+    icon: 'envelope'
   }
 ]
 
@@ -98,6 +105,7 @@ class Accordion extends Component<{},{}> {
       return (
         <div className="list-group-item clearfix">
           <div className="pull-left">
+            <i className={`fa fa-${props.element.icon}`}/>{" "}
             {props.element.label}
           </div>
           <div className="pull-right">

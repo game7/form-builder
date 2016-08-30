@@ -9,15 +9,20 @@ interface IProps {
   onChange: (elementId: string, property: string, value: any) => void,
   expanded: boolean,
   hidden?: boolean,
-  onEdit: (id: string) => void
+  onEdit: (id: string) => void,
+  onDestroy: (id: string) => void
 }
 
 export default class EditorFrame extends Component<IProps, {}> {
 
-  handleEditClick = (event: Event) => {
+  handleEditClick = (event: React.FormEvent) => {
     if(this.props.onEdit) {
       this.props.onEdit(this.props.element.id);
     }
+  }
+
+  handleDestroy = (id: string) => (event: React.FormEvent) => {
+    this.props.onDestroy(id);
   }
 
   handleChange = (property, value) => {
@@ -36,8 +41,17 @@ export default class EditorFrame extends Component<IProps, {}> {
     return (
       <Panel>
         <Panel.Heading
-          title={this.props.element.type}
-          onEditClick={this.handleEditClick}/>
+          title={this.props.element.type}>
+          <button className="btn btn-xs btn-default" onClick={this.handleEditClick}>
+            <i className="fa fa-gear"/>{" "}
+            Settings
+          </button>
+          {" "}
+          <button className="btn btn-xs btn-default" onClick={this.handleDestroy(this.props.element.id)}>
+            <i className="fa fa-trash-o"/>{" "}
+            Delete
+          </button>
+        </Panel.Heading>
         <Panel.Body
           element={this.props.element}
           expanded={this.props.expanded}
@@ -60,15 +74,12 @@ class Panel extends Component<any,any> {
       );
     }
 
-    static Heading({ title, onEditClick }) : JSX.Element {
+    static Heading({ title, children = [] }) : JSX.Element {
       return (
         <div className="panel-heading clearfix">
           {title}
           <div style={{float: 'right'}}>
-            <button className="btn btn-xs btn-default" onClick={onEditClick}>
-              <i className="fa fa-gear"/>{" "}
-              Settings
-            </button>
+            {children}
           </div>
         </div>
       );

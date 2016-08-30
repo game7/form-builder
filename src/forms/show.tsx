@@ -65,6 +65,12 @@ export default class Show extends React.Component<any, IState> {
     });
   }
 
+  handleElementDestroy = (id: string) : void => {
+    const form = Object.assign({}, this.state.form);
+    form.elements = form.elements.filter(e => e.id !== id);
+    this.setState({ form: form });
+  }
+
   handleDisplayModeChange = (display) : void => {
     this.setState({ display: display})
   }
@@ -98,7 +104,8 @@ export default class Show extends React.Component<any, IState> {
                   onChange={this.handleElementChange}
                   expanded={e.id === this.state.editing}
                   hidden={this.state.display == 'preview'}
-                  onEdit={this.handleElementEdit}>
+                  onEdit={this.handleElementEdit}
+                  onDestroy={this.handleElementDestroy}>
                   <FormElement
                     key={i}
                     {...e}
