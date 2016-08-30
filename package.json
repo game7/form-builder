@@ -38,6 +38,7 @@
     "promise": "7.1.1",
     "react-hot-loader": "^3.0.0-beta.1",
     "rimraf": "2.5.4",
+    "shelljs": "^0.7.4",
     "style-loader": "0.13.1",
     "ts-loader": "^0.8.2",
     "typescript": "^2.1.0-dev.20160818",
@@ -57,7 +58,8 @@
   },
   "scripts": {
     "start": "node ./scripts/start.js",
-    "build": "node ./scripts/build.js"
+    "build": "node ./scripts/build.js",
+    "deploy": "node ./scripts/deploy.js"    
   },
   "eslintConfig": {
     "extends": "./config/eslint.js"
