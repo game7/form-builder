@@ -18,7 +18,7 @@ const elements : IElement[] = [
   {
     type: 'long-text',
     label: 'Long Text',
-    icon: 'font'
+    icon: 'paragraph'
   },
   {
     type: 'checkbox',
@@ -39,6 +39,11 @@ const elements : IElement[] = [
     type: 'email',
     label: 'Email',
     icon: 'envelope'
+  },
+  {
+    type: 'url',
+    label: 'URL',
+    icon: 'link'
   }
 ]
 

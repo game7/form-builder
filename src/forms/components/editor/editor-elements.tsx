@@ -91,6 +91,7 @@ let elements: { [id: string]: IAttribute[] } = el;
 el['short-text'] = templates['text-field'];
 el['long-text'] = templates['text-field'];
 el['email'] = templates['text-field'];
+el['url'] = templates['text-field'];
 
 el['checkbox'] = [
   attr.label,

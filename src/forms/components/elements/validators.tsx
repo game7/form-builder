@@ -96,6 +96,11 @@ class FluentRules<TObject, TValue> {
       .withMessageKey('email');
   }
 
+  url() {
+    return this.matches(/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/)
+      .withMessageKey('url');
+  }
+
   minLength(length: number) {
     return this.satisfies(
       (value: any) =>
@@ -132,7 +137,8 @@ class FluentEnsure<TObject> {
 
 const messages = {
   required: 'Can\'t be blank',
-  email: 'Must be a valid email address'
+  email: 'Must be a valid email address',
+  url: 'Must be a valid URL'
 }
 
 function message(rule) {

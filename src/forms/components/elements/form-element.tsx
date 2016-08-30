@@ -5,7 +5,8 @@ import ShortText            from './short-text';
 import LongText             from './long-text';
 import Checkbox             from './checkbox';
 import MultipleChoice       from './multiple-choice';
-import Email                from './email'
+import Email                from './email';
+import Url                  from './url';
 
 export default function FormElement(props: any):JSX.Element {
   switch(props.type) {
@@ -21,6 +22,8 @@ export default function FormElement(props: any):JSX.Element {
       return <MultipleChoice {...props}/>
     case 'email':
       return <Email {...props}/>
+    case 'url':
+      return <Url {...props}/>
     default:
       return null;
   }
