@@ -131,7 +131,8 @@ class FluentEnsure<TObject> {
 }
 
 const messages = {
-  required: 'Can\'t be blank'
+  required: 'Can\'t be blank',
+  email: 'Must be a valid email address'
 }
 
 function message(rule) {
@@ -146,7 +147,7 @@ export class Validator<TObject> {
       return new FluentEnsure(this).ensure(property);
   }
 
-  validate(model: TObject) {
+  validate(model: TObject): string[] {
     return this.rules.filter(rule => rule.when(model))
                      .filter(rule => !rule.condition(model[rule.property]))
                      .map(rule => message(rule));

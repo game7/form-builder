@@ -28,6 +28,10 @@ const elements : IElement[] = [
   {
     type: 'statement',
     label: 'Statement'
+  },
+  {
+    type: 'email',
+    label: 'Email'
   }
 ]
 
