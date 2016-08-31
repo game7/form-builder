@@ -109,4 +109,9 @@ el['multiple-choice'] = [
   attr.randomize
 ];
 
+el['address'] = [
+  attr.property,
+  attr.label
+];
+
 export default elements;

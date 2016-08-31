@@ -6,6 +6,7 @@ type ClickHandler = () => void;
 interface IElement {
   type: string,
   label: string,
+  property?: string,
   icon: string
 }
 
@@ -44,6 +45,12 @@ const elements : IElement[] = [
     type: 'url',
     label: 'URL',
     icon: 'link'
+  },
+  {
+    type: 'address',
+    label: 'Address',
+    property: 'address',
+    icon: 'globe'
   }
 ]
 

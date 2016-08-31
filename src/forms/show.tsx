@@ -101,7 +101,7 @@ export default class Show extends React.Component<any, IState> {
     return (
       <div>
         <h1>Show {this.props.routeParams.id}</h1>
-        {/*<pre>{JSON.stringify(this.state.form, null, 2)}</pre>*/}
+        <pre>FORM_DATA: {JSON.stringify(this.state.data, null, 2)}</pre>
 
         <div className="clearfix" style={{ marginBottom: 10 }}>
             <Actions>
