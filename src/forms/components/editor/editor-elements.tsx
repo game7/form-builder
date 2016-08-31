@@ -94,6 +94,7 @@ el['email'] = templates['text-field'];
 el['url'] = templates['text-field'];
 
 el['checkbox'] = [
+  attr.property,
   attr.label,
   attr.text,
   attr.required
